@@ -18,9 +18,6 @@ inputs:
   content:
     description: String content for webhook.
     required: false
-  image:
-    description: Big image at the bottom.
-    required: false
   footer_title:
     description: Title for the footer.
     required: false
