@@ -34,7 +34,7 @@ const reduceNewlines = (text) => text.replace(/\n\s*\n/g, (ws) => {
  */
 const convertMentionsToLinks = (text) => text.replace(
     /(?<![/@\w])@((?!-)(?!.*?--)[a-zA-Z0-9](?:-?[a-zA-Z0-9]){0,37})(?![.\w/-])(?!.*\])/g,
-    (match, name) => `@${name}`
+    (match, name) => `[@${name}](https://github.com/${name})`
 );
 
 /**
@@ -117,7 +117,7 @@ const getContext = () => {
     const { release } = github.context.payload;
     return {
         body: release.body,
-        name: release.name,
+        name: release.name.split('v')[1],
         html_url: release.html_url
     };
 };
@@ -158,7 +158,6 @@ const limitString = (str, maxLength, url, clipAtLine = false) => {
 const buildEmbedMessage = (name, html_url, description) => {
     const embedMsg = {
         title: limitString(name, 256),
-        url: html_url,
         color: core.getInput('color'),
         description: limitString(description, Math.min(getMaxDescription(), 6000 - name.length)),
         footer: {}
