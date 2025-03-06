@@ -7,7 +7,7 @@ import fetch from 'node-fetch';
  * @param {string} text The input text.
  * @returns {string} The text without carriage return characters.
  */
-const removeCarriageReturn = (text) => text.replace(/\r/g, '').replace(/##\s\[.+\)\n\n\n/g, '');
+const removeCarriageReturn = (text) => text.replace(/\r/g, '').replace(/##\s\[.+\)\n\n\n/g, '').replace('\n\n', '\n');
 
 /**
  * Removes HTML comments.
