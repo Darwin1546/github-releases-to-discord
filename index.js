@@ -7,7 +7,7 @@ import fetch from 'node-fetch';
  * @param {string} text The input text.
  * @returns {string} The text without carriage return characters.
  */
-const removeCarriageReturn = (text) => text.replace(/\r/g, '');
+const removeCarriageReturn = (text) => text.replace(/\r/g, '').replace(/\(\d\d\d\d\-\d\d\-\d\d\)/, '');
 
 /**
  * Removes HTML comments.
@@ -34,7 +34,7 @@ const reduceNewlines = (text) => text.replace(/\n\s*\n/g, (ws) => {
  */
 const convertMentionsToLinks = (text) => text.replace(
     /(?<![/@\w])@((?!-)(?!.*?--)[a-zA-Z0-9](?:-?[a-zA-Z0-9]){0,37})(?![.\w/-])(?!.*\])/g,
-    (match, name) => `[@${name}](https://github.com/${name})`
+    (match, name) => `@${name}`
 );
 
 /**
