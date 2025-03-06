@@ -7,7 +7,7 @@ import fetch from 'node-fetch';
  * @param {string} text The input text.
  * @returns {string} The text without carriage return characters.
  */
-const removeCarriageReturn = (text) => text.replace(/\r/g, '').replace(/\(\d\d\d\d\-\d\d\-\d\d\)/, '');
+const removeCarriageReturn = (text) => text.replace(/\r/g, '').replace(/##\s\[.+\)\n\n\n/g, '');
 
 /**
  * Removes HTML comments.
@@ -117,7 +117,7 @@ const getContext = () => {
     const { release } = github.context.payload;
     return {
         body: release.body,
-        name: release.name.split('v')[1],
+        name: 'Самосбор Minecraft ' + release.name.split('v')[1],
         html_url: release.html_url
     };
 };
