@@ -170,7 +170,7 @@ const buildEmbedMessage = (name, html_url, description) => {
         embedMsg.footer.icon_url = core.getInput('footer_icon_url');
     }
     if (core.getInput('image')) {
-        embedMsg.image = core.getInput('image');
+        embedMsg.image.url = core.getInput('image');
     }
     if (core.getInput('footer_timestamp') === 'true') {
         embedMsg.timestamp = new Date().toISOString();
