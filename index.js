@@ -70,7 +70,7 @@ const convertLinksToMarkdown = (text) => {
         .replace(/https:\/\/github\.com\/([\w-]+)\/([\w-]+)\/compare\/([v\w.-]+)\.\.\.([v\w.-]+)/g, (match, owner, repo, fromVersion, toVersion) => ``);
 
     // Reinsert the original markdown links
-    return processedText.replace(/__MARKDOWN_LINK_PLACEHOLDER_(\d+)__/g, (match, index) => ``);
+    return processedText.replace(/__MARKDOWN_LINK_PLACEHOLDER_(\d+)__/g, (match, index) => ``).replaceAll('()', '');
 };
 
 /**
