@@ -160,7 +160,8 @@ const buildEmbedMessage = (name, html_url, description) => {
         title: limitString(name, 256),
         color: core.getInput('color'),
         description: limitString(description, Math.min(getMaxDescription(), 6000 - name.length)),
-        footer: {}
+        footer: {},
+        image: {},
     };
 
     if (core.getInput('footer_title')) {
